@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchWeather, fetchWeatherDetails } from "../../services/weatherApi";
 import { Weather, WeatherDetails } from "../../services/interface";
-import { Col, Row } from "antd";
+import { Breadcrumb, Row } from "antd";
 import styles from "./Climates.module.scss";
 import {
   ArrowDownOutlined,
@@ -36,6 +36,7 @@ const CityWeather: React.FC = () => {
         <LoadingOutlined />
       </div>
     );
+
   console.log(weather);
   console.log(weatherDetails);
   return (
@@ -64,39 +65,94 @@ const CityWeather: React.FC = () => {
           src={weather.current.condition.icon}
           alt={weather.current.condition.text}
           style={{
-            height: "130px",
+            height: "150px",
             margin: "auto",
             display: "block",
           }}
         />
       </div>
+      <div className={styles.hourlyForecast}>
+        <div className={styles.divHour}>
+          <Row>dawn</Row>
+          <Row>
+            <img
+              src={weatherDetails.hour[3].condition.icon}
+              alt={weatherDetails.hour[3].condition.text}
+              style={{
+                margin: "auto",
+              }}
+            />
+          </Row>
+          {weatherDetails.hour[3].temp_c}°C
+        </div>
+        <div className={styles.divHour}>
+          <Row>morning</Row>
+          <Row>
+            <img
+              src={weatherDetails.hour[9].condition.icon}
+              alt={weatherDetails.hour[9].condition.text}
+              style={{
+                margin: "auto",
+              }}
+            />
+          </Row>
+          {weatherDetails.hour[9].temp_c}°C
+        </div>
+        <div className={styles.divHour}>
+          <Row>afternoon</Row>
+          <Row>
+            <img
+              src={weatherDetails.hour[15].condition.icon}
+              alt={weatherDetails.hour[15].condition.text}
+              style={{
+                margin: "auto",
+              }}
+            />
+          </Row>
+          {weatherDetails.hour[15].temp_c}°C
+        </div>
+        <div className={styles.divHour}>
+          <Row>night</Row>
+          <Row>
+            <img
+              src={weatherDetails.hour[21].condition.icon}
+              alt={weatherDetails.hour[21].condition.text}
+              style={{
+                margin: "auto",
+              }}
+            />
+          </Row>
+          {weatherDetails.hour[21].temp_c}°C
+        </div>
+      </div>
+
       <div className={styles.centerComponents}>
-        <Row>
-          <Col sm={8}>
+        <Breadcrumb separator="">
+          <Breadcrumb.Item>
             <div className={styles.weatherInfo}>
               <p>wind speed</p>
-              <p>{weather.current.wind_kph}</p>
+              <p>{weather.current.wind_kph} kph</p>
             </div>
-          </Col>
-          <Col sm={5}>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
             <div className={styles.weatherInfo}>
               <p>sunrise</p>
               <p>{weatherDetails.astro.sunrise}</p>
             </div>
-          </Col>
-          <Col sm={5}>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
             <div className={styles.weatherInfo}>
               <p>sunset</p>
               <p>{weatherDetails.astro.sunset}</p>
             </div>
-          </Col>
-          <Col sm={6}>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
             <div className={styles.weatherInfo}>
               <p>humidity</p>
               <p>{weather.current.humidity}%</p>
             </div>
-          </Col>
-        </Row>
+          </Breadcrumb.Item>
+        </Breadcrumb>
       </div>
     </>
   );
