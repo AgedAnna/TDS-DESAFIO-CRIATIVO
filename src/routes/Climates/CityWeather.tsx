@@ -35,11 +35,14 @@ const CityWeather: React.FC<CityWeatherProps> = ({
       case "sunny":
         color = "#47B3C6";
         break;
+      case "clear":
+        color = "#47B3C6";
+        break;
       case "rain":
         color = "#4E5665";
         break;
-      case "cloudy":
-        color = "#bfbfbf";
+      case "Partly cloudy":
+        color = "#4E5665";
         break;
       case "snow":
         color = "#e0e0e0";
@@ -56,10 +59,13 @@ const CityWeather: React.FC<CityWeatherProps> = ({
       case "sunny":
         color = "#f0f0f0";
         break;
+      case "clear":
+        color = "#f0f0f0";
+        break;
       case "rain":
         color = "#0F0F0F";
         break;
-      case "cloudy":
+      case "Partly cloudy":
         color = "#0F0F0F";
         break;
       case "snow":
@@ -87,10 +93,10 @@ const CityWeather: React.FC<CityWeatherProps> = ({
   if (!weather || !weatherDetails)
     return (
       <div className={styles.loading}>
-        <LoadingOutlined />
+        <LoadingOutlined style={{ fontSize: "50px", color: "#47B3C6" }} />
       </div>
     );
-
+  console.log(weather);
   return (
     <>
       <div className={styles.centerComponents}>
@@ -131,7 +137,7 @@ const CityWeather: React.FC<CityWeatherProps> = ({
               src={weatherDetails.hour[3].condition.icon}
               alt={weatherDetails.hour[3].condition.text}
               style={{
-                margin: "auto",
+                margin: "5px",
               }}
             />
           </Row>
@@ -144,7 +150,7 @@ const CityWeather: React.FC<CityWeatherProps> = ({
               src={weatherDetails.hour[9].condition.icon}
               alt={weatherDetails.hour[9].condition.text}
               style={{
-                margin: "auto",
+                margin: "5px",
               }}
             />
           </Row>
@@ -157,7 +163,7 @@ const CityWeather: React.FC<CityWeatherProps> = ({
               src={weatherDetails.hour[15].condition.icon}
               alt={weatherDetails.hour[15].condition.text}
               style={{
-                margin: "auto",
+                margin: "5px",
               }}
             />
           </Row>
@@ -170,7 +176,7 @@ const CityWeather: React.FC<CityWeatherProps> = ({
               src={weatherDetails.hour[21].condition.icon}
               alt={weatherDetails.hour[21].condition.text}
               style={{
-                margin: "auto",
+                margin: "5px",
               }}
             />
           </Row>

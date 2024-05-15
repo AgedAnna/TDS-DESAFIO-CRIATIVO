@@ -1,3 +1,12 @@
+.centerComponent {
+  margin: 0;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 100px;
+}
+
 .centerComponents {
   display: flex;
   align-items: center;
@@ -5,7 +14,7 @@
   justify-content: center;
   flex-direction: column;
   color: aliceblue;
-  margin-right: 0; /* Removendo margem direita */
+  margin-right: 0;
 }
 
 .centerComponentsCities {
@@ -15,7 +24,7 @@
   justify-content: center;
   margin-top: 25px;
   color: aliceblue;
-  margin-bottom: 0; /* Removendo margem inferior */
+  margin-bottom: 0;
 }
 
 .title {

@@ -22,36 +22,38 @@ const Home: React.FC = () => {
 
   return (
     <React.Fragment>
-      <div className={styles.centerComponents}>
-        <Row className={styles.title}>WEATHER</Row>
-        <Row className={styles.select}>select a city</Row>
-      </div>
+      <div className={styles.centerComponent}>
+        <div className={styles.centerComponents}>
+          <Row className={styles.title}>WEATHER</Row>
+          <Row className={styles.select}>select a city</Row>
+        </div>
 
-      <div className={styles.centerComponents}>
-        <img
-          src={globeImg}
-          alt="globe"
-          style={{
-            width: "150px",
-            padding: "10px",
-            margin: "10px",
-          }}
-        />
-      </div>
+        <div className={styles.centerComponents}>
+          <img
+            src={globeImg}
+            alt="globe"
+            style={{
+              width: "150px",
+              padding: "10px",
+              margin: "10px",
+            }}
+          />
+        </div>
 
-      <div className={styles.centerComponentsCities}>
-        <Row gutter={[16, 16]}>
-          {cities.map((city) => (
-            <Col key={city.name} span={8}>
-              <div
-                className={styles.city}
-                onClick={() => handleCityClick(city.name, city.country)}
-              >
-                {city.name}
-              </div>
-            </Col>
-          ))}
-        </Row>
+        <div className={styles.centerComponentsCities}>
+          <Row gutter={[16, 16]}>
+            {cities.map((city) => (
+              <Col key={city.name} span={8}>
+                <div
+                  className={styles.city}
+                  onClick={() => handleCityClick(city.name, city.country)}
+                >
+                  {city.name}
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </div>
       </div>
     </React.Fragment>
   );
