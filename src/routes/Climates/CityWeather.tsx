@@ -15,10 +15,62 @@ interface RouteParams extends Record<string, string | undefined> {
   country?: string;
 }
 
-const CityWeather: React.FC = () => {
+interface CityWeatherProps {
+  setBackgroundColor: (color: string) => void;
+  setColor: (color: string) => void;
+}
+
+const CityWeather: React.FC<CityWeatherProps> = ({
+  setBackgroundColor,
+  setColor,
+}) => {
   const { city, country } = useParams<RouteParams>();
   const [weather, setWeather] = useState<Weather>();
   const [weatherDetails, setWeatherDetails] = useState<WeatherDetails>();
+  const [breadcrumbColor, setBreadcrumbColor] = useState<string>("#0F0F0F");
+
+  const updateBackgroundColor = (condition: string) => {
+    let color;
+    switch (condition.toLowerCase()) {
+      case "sunny":
+        color = "#47B3C6";
+        break;
+      case "rain":
+        color = "#4E5665";
+        break;
+      case "cloudy":
+        color = "#bfbfbf";
+        break;
+      case "snow":
+        color = "#e0e0e0";
+        break;
+      default:
+        color = "#f0f0f0";
+    }
+    setBackgroundColor(color);
+  };
+
+  const updateColor = (condition: string) => {
+    let color;
+    switch (condition.toLowerCase()) {
+      case "sunny":
+        color = "#f0f0f0";
+        break;
+      case "rain":
+        color = "#0F0F0F";
+        break;
+      case "cloudy":
+        color = "#0F0F0F";
+        break;
+      case "snow":
+        color = "#f0f0f0";
+        break;
+      default:
+        color = "#0F0F0F";
+    }
+    setColor(color);
+    setBreadcrumbColor(color);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,6 +78,8 @@ const CityWeather: React.FC = () => {
       setWeather(weatherData);
       const detailsData = await fetchWeatherDetails(`${city},${country}`);
       setWeatherDetails(detailsData.forecast.forecastday[0]);
+      updateBackgroundColor(weatherData.current.condition.text);
+      updateColor(weatherData.current.condition.text);
     };
     fetchData();
   }, [city, country]);
@@ -37,8 +91,6 @@ const CityWeather: React.FC = () => {
       </div>
     );
 
-  console.log(weather);
-  console.log(weatherDetails);
   return (
     <>
       <div className={styles.centerComponents}>
@@ -129,25 +181,37 @@ const CityWeather: React.FC = () => {
       <div className={styles.centerComponents}>
         <Breadcrumb separator="">
           <Breadcrumb.Item>
-            <div className={styles.weatherInfo}>
+            <div
+              className={styles.weatherInfo}
+              style={{ color: breadcrumbColor }}
+            >
               <p>wind speed</p>
               <p>{weather.current.wind_kph} kph</p>
             </div>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
-            <div className={styles.weatherInfo}>
+            <div
+              className={styles.weatherInfo}
+              style={{ color: breadcrumbColor }}
+            >
               <p>sunrise</p>
               <p>{weatherDetails.astro.sunrise}</p>
             </div>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
-            <div className={styles.weatherInfo}>
+            <div
+              className={styles.weatherInfo}
+              style={{ color: breadcrumbColor }}
+            >
               <p>sunset</p>
               <p>{weatherDetails.astro.sunset}</p>
             </div>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
-            <div className={styles.weatherInfo}>
+            <div
+              className={styles.weatherInfo}
+              style={{ color: breadcrumbColor }}
+            >
               <p>humidity</p>
               <p>{weather.current.humidity}%</p>
             </div>

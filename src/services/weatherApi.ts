@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API_KEY = "e796133909cb4391a1d22117241505";
-const BASE_URL = "http://api.weatherapi.com/v1";
+const BASE_URL = "https://api.weatherapi.com/v1";
 
 export const fetchCities = async (query: string) => {
   const response = await axios.get(`${BASE_URL}/search.json`, {
