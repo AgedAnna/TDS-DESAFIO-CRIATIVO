@@ -1,0 +1,40 @@
+.centerComponents {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  color: aliceblue;
+  margin-right: 0; /* Removendo margem direita */
+}
+
+.centerComponentsCities {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-top: 25px;
+  color: aliceblue;
+  margin-bottom: 0; /* Removendo margem inferior */
+}
+
+.title {
+  font-weight: 300 !important;
+  font-size: 35px;
+  margin-top: 20px;
+  margin-bottom: -2px;
+}
+
+.select {
+  font-weight: 100 !important;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.city {
+  font-size: 18px;
+}
+
+.city:hover {
+  cursor: pointer;
+}

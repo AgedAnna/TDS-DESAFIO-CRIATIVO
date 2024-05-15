@@ -1,0 +1,28 @@
+.centerComponents {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.city {
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.temp_c {
+  font-size: 70px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.temp {
+  font-size: 25px;
+  font-weight: 600;
+  margin-top: 27px;
+  padding-left: 15px;
+}
