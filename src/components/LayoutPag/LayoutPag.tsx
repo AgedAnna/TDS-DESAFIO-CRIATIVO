@@ -10,6 +10,7 @@ interface LayoutPagPros {
   content: React.ReactNode;
   header: boolean;
   backgroundColor?: string;
+  backgroundColorHeader?: string;
 }
 
 const LayoutPag: React.FC<LayoutPagPros> = ({
@@ -21,7 +22,10 @@ const LayoutPag: React.FC<LayoutPagPros> = ({
     <Layout className={styles.layout}>
       <Layout>
         {header && (
-          <Header style={{ padding: 10 }} className={styles.header}>
+          <Header
+            style={{ padding: 10, backgroundColor }}
+            className={styles.header}
+          >
             <Link to="/">
               <ArrowLeftOutlined className={styles.icon} />
             </Link>

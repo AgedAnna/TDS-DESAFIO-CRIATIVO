@@ -14,7 +14,7 @@
 }
 
 .temp_c {
-  font-size: 70px;
+  font-size: 80px;
   font-weight: 600;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -24,5 +24,32 @@
   font-size: 25px;
   font-weight: 600;
   margin-top: 27px;
-  padding-left: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.tempMinMax {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.tempMinMax p {
+  margin: 0 5px;
+}
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 25px;
 }
